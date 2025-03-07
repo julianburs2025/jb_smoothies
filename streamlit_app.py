@@ -1,8 +1,7 @@
 # Import python packages
 import streamlit as st
 from snowflake.snowpark.functions import col
-cnx = st.connection("snowflake")
-session = cnx.session()
+
 
 helpful_links = [
     "https://docs.streamlit.io",
@@ -10,7 +9,8 @@ helpful_links = [
     "https://github.com/Snowflake-Labs/snowflake-demo-streamlit",
     "https://docs.snowflake.com/en/release-notes/streamlit-in-snowflake"
 ]
-
+cnx = st.connection("snowflake")
+session = cnx.session()
 # Write directly to the app
 st.title(":cup_with_straw: Customize your smoothie!:cup_with_straw:")
 st.write(
