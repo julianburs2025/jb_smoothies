@@ -9,7 +9,8 @@ helpful_links = [
     "https://github.com/Snowflake-Labs/snowflake-demo-streamlit",
     "https://docs.snowflake.com/en/release-notes/streamlit-in-snowflake"
 ]
-
+cnx = st.connection("snowflake")
+session = cnx.session()
 # Write directly to the app
 st.title(":cup_with_straw: Customize your smoothie!:cup_with_straw:")
 st.write(
@@ -20,9 +21,6 @@ st.write(
 # ord_filled = ("False")
 name_on_order = st.text_input("Name on Smoothie")
 st.write("The name on your smoothie will be: ", name_on_order)
-
-cnx = st.connection("snowflake")
-session = cnx.session()
 
 # Get the current credentials
 session = get_active_session()
@@ -51,7 +49,3 @@ if ingredients_list:
         session.sql(my_insert_stmt).collect()
         st.success('Your Smoothie is ordered,'+name_on_order+'!', icon="✅")
    
-
-   
-
-
